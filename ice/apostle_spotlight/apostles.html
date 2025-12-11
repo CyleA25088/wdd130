@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostles Spotlights</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: arial;
+        }
+
+        body {
+            background: #e8eced;
+            color: white;
+            display:flex;
+            justify-content: center;
+        }
+
+        .wrap {
+            background-image: url(./images/christus.webp);
+            background-size: cover;
+            width: 850px;
+            height: 650px;
+            margin: 30px;
+            border-radius: 50px;
+            border: solid 5px black;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .img-wrap {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .img-wrap.head {
+            width: 120px;
+            height: 120px;
+        }
+
+        .img-wrap:hover {
+            transform: scale(1.1);
+        }
+
+
+        .img-wrap img {
+            width: inherit;
+        }
+
+        .president {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .apostles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>First Presidency</h1>
+        <div class="president">
+            <div class="img-wrap">
+                <img src="./images/oaks.webp" alt="Dallin H. Oaks">
+            </div>
+            <div class="img-wrap head">
+                <img src="./images/nelson.webp" alt="Russell M. Nelson">
+            </div>
+            <div class="img-wrap">
+                <img src="./images/eyring.webp" alt="Henry B. Eyring">
+            </div>
+        </div>
+        <h2>Quorum of the Twelve Apostles</h2>
+        <div class="apostles">
+            <div class="img-wrap"><img src="./images/anderson.webp" alt="Neil L. Andersen"></div>
+            <div class="img-wrap"><img src="./images/bednar.webp" alt="David A. Bednar"></div>
+            <div class="img-wrap"><img src="./images/christofferson.webp" alt="D. Todd Christofferson"></div>
+            <div class="img-wrap"><img src="./images/cook.webp" alt="Quentin L. Cook"></div>
+            <div class="img-wrap"><img src="./images/holland.webp" alt="Jeffrey R. Holland"></div>
+            <div class="img-wrap"><img src="./images/rasband.webp" alt="Ronald A. Rasband"></div>
+            <div class="img-wrap"><img src="./images/renlund.webp" alt="Dale G. Renlund"></div>
+            <div class="img-wrap"><img src="./images/soares.webp" alt="Ulisses Soares"></div>
+            <div class="img-wrap"><img src="./images/stevenson.webp" alt="Gary E. Stevenson"></div>
+            <div class="img-wrap"><img src="./images/uchtdorf.webp" alt="Dieter F. Uchtdorf"></div>
+            <div class="img-wrap"><img src="./images/gong.webp" alt="Gerrit W. Gong"></div>
+            <div class="img-wrap"><img src="./images/kearon.webp" alt="Ian S. Kearon"></div>
+        </div>
+    </div>
+</body>
+</html>

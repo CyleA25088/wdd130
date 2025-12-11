@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICE Projects Showcase</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .home-button {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .home-button:hover {
+        background-color: #0056b3;
+    }
+
+
+    h1 { margin: 0; }
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .project-card {
+        width: 200px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+    }
+
+.project-card img {
+    width: 100%;
+    height: 160px;              /* same height for all previews */
+    object-fit: cover;          /* crop instead of stretch */
+    object-position: center;    /* keep center in view */
+    display: block;             /* remove inline spacing */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+
+    .project-card .project-name {
+        text-align: center;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ccc;
+    }
+
+    .project-card .project-name a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .project-card .project-name a:hover {
+        color: #007BFF;
+    }
+
+    iframe {
+        width: 100%;
+        height: 600px;
+        border: none;
+        margin-top: 20px;
+        background-color: white;
+    }
+
+    a[target='_blank']:hover::after {
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 12.2 12.2' width='14' height='14'%3E%3Cpath fill='%23007BFF' d='M5.7 0v1.5h4L4.5 6.7l1 1.1 5.3-5.2v3.9h1.4V0z'/%3E%3Cpath fill='none' d='M3.4 6.7l3-2.9H1.5v7h7V5.9l-3 2.9z'/%3E%3Cpath fill='%23007BFF' d='M8.5 5.9v4.9h-7v-7h4.9l1.5-1.6H0v10h10V4.4z'/%3E%3C/svg%3E");
+    }
+
+    a[target='_blank']::after {
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 12.2 12.2' width='14' height='14'%3E%3Cpath d='M5.7 0v1.5h4L4.5 6.7l1 1.1 5.3-5.2v3.9h1.4V0z'/%3E%3Cpath fill='none' d='M3.4 6.7l3-2.9H1.5v7h7V5.9l-3 2.9z'/%3E%3Cpath d='M8.5 5.9v4.9h-7v-7h4.9l1.5-1.6H0v10h10V4.4z'/%3E%3C/svg%3E");
+        margin-left: 0.25em;
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>ICE Projects Showcase</h1>
+    <p>Click an image to preview in the iframe, or the name to open in a new tab</p>
+    <a href="../index.html" class="home-button">🏠 Back Home</a>
+</header>
+
+
+<main>
+    <!-- Apostle Spotlight -->
+    <div class="project-card">
+        <img src="apostle_spotlight/preview.png" alt="Apostle Spotlight" onclick="document.getElementById('projectFrame').src='apostle_spotlight/apostles.html'">
+        <div class="project-name">
+            <a href="apostle_spotlight/apostles.html" target="_blank">Apostle Spotlight</a>
+        </div>
+    </div>
+
+    <!-- Favorite Devotional -->
+    <div class="project-card">
+        <img src="favorite_devo/preview.png" alt="Favorite Devotional" onclick="document.getElementById('projectFrame').src='favorite_devo/favdevo.html'">
+        <div class="project-name">
+            <a href="favorite_devo/favdevo.html" target="_blank">Favorite Devotional</a>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="project-card">
+        <img src="gallery/preview.png" alt="Gallery" onclick="document.getElementById('projectFrame').src='gallery/gallery.html'">
+        <div class="project-name">
+            <a href="gallery/gallery.html" target="_blank">Gallery</a>
+        </div>
+    </div>
+
+    <!-- Grid Flags -->
+    <div class="project-card">
+        <img src="grid_flags/preview.png" alt="Grid Flags" onclick="document.getElementById('projectFrame').src='grid_flags/flags.html'">
+        <div class="project-name">
+            <a href="grid_flags/flags.html" target="_blank">Grid Flags</a>
+        </div>
+    </div>
+
+    <!-- Halloween -->
+    <div class="project-card">
+        <img src="halloween/preview.png" alt="Halloween" onclick="document.getElementById('projectFrame').src='halloween/index.html'">
+        <div class="project-name">
+            <a href="halloween/index.html" target="_blank">Halloween</a>
+        </div>
+    </div>
+
+    <!-- Positioning -->
+    <div class="project-card">
+        <img src="positioning/preview.png" alt="Positioning" onclick="document.getElementById('projectFrame').src='positioning/positioning.html'">
+        <div class="project-name">
+            <a href="positioning/positioning.html" target="_blank">Positioning</a>
+        </div>
+    </div>
+
+    <!-- Prophet Cards -->
+    <div class="project-card">
+        <img src="prophet_cards/preview.png" alt="Prophet Cards" onclick="document.getElementById('projectFrame').src='prophet_cards/nelson.html'">
+        <div class="project-name">
+            <a href="prophet_cards/nelson.html" target="_blank">Prophet Cards</a>
+        </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="project-card">
+        <img src="signup/preview.png" alt="Signup Form" onclick="document.getElementById('projectFrame').src='signup/signup.html'">
+        <div class="project-name">
+            <a href="signup/signup.html" target="_blank">Signup Form</a>
+        </div>
+    </div>
+</main>
+
+<iframe id="projectFrame" src=""></iframe>
+
+</body>
+</html>

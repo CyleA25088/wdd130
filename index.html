@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyle's Portal Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      color: white;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgb(31 31 31 / 55%);
+      backdrop-filter: blur(10.2px);
+      -webkit-backdrop-filter: blur(10.2px);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    section {
+      position: relative;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      padding: 3rem;
+      z-index: 1;
+    }
+
+    .left .content {
+      grid-column: 1 / 2;
+      text-align: left;
+    }
+
+    .right .content {
+      grid-column: 2 / 3;
+      text-align: right;
+    }
+
+    /* Button styles */
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+      color: white;
+      border: 2px solid white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      background: white;
+      color: black;
+    }
+
+    #wwr {
+      background-image: url('./images/photo-1629248564797-8c5ba85da9d3.jpg');
+    }
+
+    #ice {
+      background-image: url('./images/photo-1507842217343-583bb7270b66.jpg');
+    }
+
+    #projects {
+      background-image: url('./images/photo-1519389950473-47ba0277781c.jpg');
+    }
+
+    footer {
+      text-align: center;
+      background: #111;
+      color: #aaa;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Cyle's Portal Page</header>
+
+  <section id="wwr" class="parallax left">
+    <div class="content">
+      <h2>White Water Rafting</h2>
+      <p>Experience the thrill of adventure on the White Water river.</p>
+      <a href="/wwr" class="btn">Visit Page</a>
+    </div>
+  </section>
+
+  <section id="ice" class="parallax right">
+    <div class="content">
+      <h2>ICE — HTML & ICE Challenges</h2>
+      <p>Explore my Web Design challenges.</p>
+      <a href="/ice" class="btn">View Challenges</a>
+    </div>
+  </section>
+
+  <section id="projects" class="parallax left">
+    <div class="content">
+      <h2>Projects</h2>
+      <p>Visit my Final Projects</p>
+      <a href="https://mastersmeddy.github.io/wdd130-grumbles/" target="_blank" class="btn">American Champions</a>
+      <br>
+      <a href="https://danielviviers.github.io/wdd130-Carr/" target="_blank" class="btn">Steam Powered Carr</a>
+      <br>
+      <a href="https://cylea25088.github.io/wdd130-Hanis/" target="_blank" class="btn">Baseline</a>
+    </div>
+  </section>
+
+  <footer>© 2025 Cyle Andrews. All rights reserved.</footer>
+
+</body>
+</html>

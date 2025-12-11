@@ -1,0 +1,406 @@
+/* ===== styles/styles.css — go crazy edition =====
+   Everything animated: spin, jiggle, color-cycle, flash, pulse, wobble.
+   Respects prefers-reduced-motion: reduce. */
+
+/* Import fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap');
+
+:root{
+  --bg-deep: #0b0f1a;
+  --accent-orange: #ff9f43;
+  --accent-deep: #ff6b6b;
+  --pumpkin: #ffd166;
+  --text: #f6f3e8;
+  --muted: #bfc9c4;
+  --card-bg: rgba(255,255,255,0.03);
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(255,200,80,0.03), transparent 8%),
+    radial-gradient(900px 500px at 95% 90%, rgba(200,80,255,0.02), transparent 8%),
+    linear-gradient(180deg, var(--bg-deep) 0%, #0f1220 60%);
+  color:var(--text);
+  font-family: "Nosifer", sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  padding:2rem 1rem;
+  overflow-x:hidden;
+}
+
+/* Wrapper */
+#wrapper{
+  max-width:1000px;
+  margin:0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  padding:1.25rem;
+  border-radius:14px;
+  box-shadow: 0 10px 40px rgba(1,6,15,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+  position:relative;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,0.03);
+  transform-origin:center;
+  /* subtle baseline wobble for whole card */
+  animation: subtleWobble 9s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* wrapper wobble */
+@keyframes subtleWobble{
+  0%{ transform: rotate(0deg) }
+  25%{ transform: rotate(-0.4deg) translateY(-2px) }
+  50%{ transform: rotate(0.35deg) translateY(1px) }
+  75%{ transform: rotate(-0.2deg) translateY(-1px) }
+  100%{ transform: rotate(0deg) }
+}
+
+/* Decorative fog */
+#wrapper::after{
+  content:"";
+  position:absolute;
+  left:-20%;
+  bottom:-20%;
+  width:140%;
+  height:45%;
+  background: radial-gradient(60% 100% at 50% 100%, rgba(0,0,0,0.5), transparent 60%);
+  pointer-events:none;
+  filter: blur(18px) saturate(.9);
+}
+
+/* Header & nav */
+header{margin-bottom:0.6rem}
+nav ul{
+  display:flex;
+  justify-content:center;
+  gap:0.8rem;
+  list-style:none;
+  flex-wrap:wrap;
+}
+nav li{
+  background: linear-gradient(180deg, var(--accent-orange), var(--accent-deep));
+  color:#220707;
+  padding:0.5rem 0.9rem;
+  border-radius:9px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  cursor:pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  user-select:none;
+  position:relative;
+  overflow:hidden;
+  /* color cycle + little slide */
+  background-size: 300% 300%;
+  animation: navColorShift 3.5s linear infinite, navBounce 2.2s ease-in-out infinite;
+  will-change: transform, background-position;
+}
+
+/* nav color shifting gradient */
+@keyframes navColorShift{
+  0%{ background-position: 0% 50% }
+  50%{ background-position: 100% 50% }
+  100%{ background-position: 0% 50% }
+}
+
+/* nav bounce/jiggle */
+@keyframes navBounce{
+  0%{ transform: translateY(0) }
+  20%{ transform: translateY(-3px) rotate(-1deg) }
+  40%{ transform: translateY(0) rotate(1deg) }
+  60%{ transform: translateY(-2px) rotate(-0.5deg) }
+  80%{ transform: translateY(0) }
+  100%{ transform: translateY(0) }
+}
+
+/* stronger hover interaction */
+nav li:hover{
+  transform: translateY(-10px) rotate(-6deg) scale(1.07);
+  box-shadow: 0 26px 64px rgba(0,0,0,0.7);
+  filter:brightness(1.08) contrast(1.02) saturate(1.1);
+}
+
+/* Main content */
+main{
+  text-align:center;
+  padding:0.75rem 0 1rem;
+}
+
+/* Title with full color-cycling, flicker and spin bits */
+h1{
+  font-family:"Creepster", serif;
+  font-weight:700;
+  color:var(--pumpkin);
+  font-size:3rem;
+  margin-bottom:0.4rem;
+  text-shadow:
+    0 6px 18px rgba(0,0,0,0.7),
+    0 0 10px rgba(255,160,40,0.08);
+  display:inline-block;
+  padding:0.25rem 0.6rem;
+  border-radius:8px;
+  animation:
+    titleHue 6s linear infinite,
+    titleFlicker 4s steps(30, end) infinite,
+    titleWobble 7s ease-in-out infinite;
+  will-change: color, text-shadow, transform, filter;
+  transform-origin:center;
+}
+
+/* Title color/hue cycling */
+@keyframes titleHue{
+  0%{ filter: hue-rotate(0deg) }
+  25%{ filter: hue-rotate(60deg) }
+  50%{ filter: hue-rotate(140deg) }
+  75%{ filter: hue-rotate(220deg) }
+  100%{ filter: hue-rotate(360deg) }
+}
+
+/* Title subtle flicker (glow intensity) */
+@keyframes titleFlicker{
+  0%{ text-shadow: 0 6px 18px rgba(0,0,0,0.7), 0 0 6px rgba(255,160,40,0.06) }
+  10%{ text-shadow: 0 12px 32px rgba(0,0,0,0.8), 0 0 18px rgba(255,200,80,0.3) }
+  40%{ text-shadow: 0 6px 14px rgba(0,0,0,0.7), 0 0 4px rgba(255,160,40,0.06) }
+  60%{ text-shadow: 0 18px 40px rgba(0,0,0,0.9), 0 0 28px rgba(180,50,255,0.4) }
+  100%{ text-shadow: 0 6px 18px rgba(0,0,0,0.7), 0 0 6px rgba(255,160,40,0.06) }
+}
+
+/* Title wobble/tilt */
+@keyframes titleWobble{
+  0%{ transform: rotate(0deg) }
+  20%{ transform: rotate(-2.8deg) translateY(-2px) }
+  40%{ transform: rotate(1.6deg) translateY(1px) }
+  60%{ transform: rotate(-1.2deg) translateY(-1px) }
+  80%{ transform: rotate(0.8deg) translateY(0px) }
+  100%{ transform: rotate(0deg) }
+}
+
+/* Image: float + spin + hue + jiggle on hover */
+img{
+  display:block;
+  margin:0.6rem auto;
+  max-width:320px;
+  width:48%;
+  height:auto;
+  border-radius:10px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6), inset 0 -6px 18px rgba(0,0,0,0.25);
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,0.6));
+  transform-origin:center;
+  animation:
+    float 4.5s ease-in-out infinite,
+    imageSpin 9s linear infinite,
+    imageHue 8s linear infinite,
+    imagePulse 5.5s ease-in-out infinite;
+  transition: transform .18s ease, filter .12s ease;
+  will-change: transform, filter;
+}
+
+/* Compose multiple behaviors */
+@keyframes float{
+  0%,100%{ transform: translateY(0) }
+  50%{ transform: translateY(-12px) }
+}
+@keyframes imageSpin{
+  0%{ transform: translateY(0) rotate3d(0,0,1,0deg) }
+  100%{ transform: translateY(0) rotate3d(0,0,1,360deg) }
+}
+/* subtle hue cycling for the image (nice trippy effect) */
+@keyframes imageHue{
+  0%{ filter: hue-rotate(0deg) drop-shadow(0 18px 30px rgba(0,0,0,0.6)) }
+  50%{ filter: hue-rotate(140deg) drop-shadow(0 28px 40px rgba(0,0,0,0.75)) }
+  100%{ filter: hue-rotate(360deg) drop-shadow(0 18px 30px rgba(0,0,0,0.6)) }
+}
+/* pulse glow */
+@keyframes imagePulse{
+  0%{ box-shadow: 0 18px 40px rgba(0,0,0,0.6), inset 0 -6px 18px rgba(0,0,0,0.25) }
+  50%{ box-shadow: 0 30px 80px rgba(180,60,200,0.25), inset 0 -8px 24px rgba(255,120,80,0.08) }
+  100%{ box-shadow: 0 18px 40px rgba(0,0,0,0.6), inset 0 -6px 18px rgba(0,0,0,0.25) }
+}
+
+/* image hover jiggle + spin-speed up + color pop */
+img:hover{
+  transform: translateY(-14px) rotate(-10deg) scale(1.04);
+  animation-play-state: running;
+  filter: hue-rotate(200deg) saturate(1.2) contrast(1.04);
+  animation: float 2s ease-in-out infinite, imageSpin 1.6s linear infinite, imageHue 3.2s linear infinite, imagePulse 2.2s ease-in-out infinite;
+}
+
+/* Sections (cards) with pulsing glow and occasional flash */
+section{
+  background: var(--card-bg);
+  margin:1rem auto;
+  padding:1rem 1.15rem;
+  border-radius:10px;
+  max-width:820px;
+  text-align:left;
+  border:1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 8px 28px rgba(1,6,15,0.6);
+  position:relative;
+  overflow:hidden;
+  animation: cardPulse 6s ease-in-out infinite, cardHue 12s linear infinite;
+  will-change: box-shadow, filter, transform;
+}
+
+/* random jitter for cards (slight) */
+@keyframes cardPulse{
+  0%{ transform: translateY(0); box-shadow: 0 8px 28px rgba(1,6,15,0.6) }
+  30%{ transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 18px 48px rgba(120,30,160,0.15) }
+  60%{ transform: translateY(2px) rotate(0.3deg); box-shadow: 0 10px 32px rgba(30,80,160,0.06) }
+  100%{ transform: translateY(0); box-shadow: 0 8px 28px rgba(1,6,15,0.6) }
+}
+@keyframes cardHue{
+  0%{ filter: hue-rotate(0deg) }
+  50%{ filter: hue-rotate(90deg) }
+  100%{ filter: hue-rotate(0deg) }
+}
+
+/* section pseudo-bat — flutter crazy variations per section */
+section::before{
+  content: "🦇";
+  position:absolute;
+  right:14px;
+  top:8px;
+  font-size:1.6rem;
+  opacity:0.14;
+  transform-origin:center;
+  transform: rotate(-18deg);
+  pointer-events:none;
+  animation: batFlutter 3.25s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+@keyframes batFlutter{
+  0%{ transform: translateY(0) rotate(-18deg) scale(1); opacity:0.12 }
+  20%{ transform: translateY(-6px) rotate(-8deg) scale(1.06); opacity:0.26 }
+  40%{ transform: translateY(2px) rotate(-28deg) scale(0.94); opacity:0.08 }
+  60%{ transform: translateY(-8px) rotate(-6deg) scale(1.12); opacity:0.34 }
+  80%{ transform: translateY(0) rotate(-18deg) scale(0.98); opacity:0.14 }
+  100%{ transform: translateY(0) rotate(-18deg) scale(1); opacity:0.12 }
+}
+/* offset individual sections slightly so bats flutter differently */
+section:nth-of-type(2)::before{ animation-delay:0.18s; font-size:1.5rem; top:10px; right:28px }
+section:nth-of-type(3)::before{ animation-delay:0.42s; font-size:1.8rem; top:6px; right:6px }
+
+/* Subhead */
+h2{
+  font-family:"Creepster", sans-serif;
+  color:var(--pumpkin);
+  font-weight:800;
+  letter-spacing:0.6px;
+  text-transform:uppercase;
+  font-size:1.05rem;
+  margin-bottom:0.45rem;
+  display:inline-block;
+  animation: subheadShake 6.5s ease-in-out infinite, subheadHue 8s linear infinite;
+  will-change: transform, filter;
+}
+
+/* h2 shake */
+@keyframes subheadShake{
+  0%{ transform: translateX(0) }
+  15%{ transform: translateX(-2px) rotate(-1.2deg) }
+  30%{ transform: translateX(2px) rotate(1.6deg) }
+  45%{ transform: translateX(-1px) rotate(-0.6deg) }
+  60%{ transform: translateX(1px) rotate(0.8deg) }
+  100%{ transform: translateX(0) }
+}
+@keyframes subheadHue{
+  0%{ filter: hue-rotate(0deg) }
+  50%{ filter: hue-rotate(160deg) }
+  100%{ filter: hue-rotate(0deg) }
+}
+
+/* Paragraph text has little shimmer and occasional word jitter */
+p{
+  color:var(--text);
+  opacity:0.96;
+  font-size:0.98rem;
+  line-height:1.55;
+  hyphens:auto;
+  animation: textShimmer 9s linear infinite;
+  will-change: background-position;
+  background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.35));
+}
+
+/* shimmer sweep across paragraph to mimic flicker */
+@keyframes textShimmer{
+  0%{ background-position: 0% 50% }
+  50%{ background-position: 100% 50% }
+  100%{ background-position: 0% 50% }
+}
+
+/* footer flash & spin tiny */
+footer{
+  text-align:center;
+  padding:0.9rem 0 0.3rem;
+  color:var(--muted);
+  border-top: 1px dashed rgba(255,255,255,0.03);
+  margin-top:0.5rem;
+  font-size:0.95rem;
+  animation: footerFlash 7s linear infinite, footerTilt 5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+@keyframes footerFlash{
+  0%{ opacity:0.9; filter: hue-rotate(0deg) }
+  50%{ opacity:1; filter: hue-rotate(140deg) }
+  100%{ opacity:0.9; filter: hue-rotate(0deg) }
+}
+@keyframes footerTilt{
+  0%{ transform: rotate(0deg) }
+  50%{ transform: rotate(-2deg) }
+  100%{ transform: rotate(0deg) }
+}
+
+/* special "spooky" nav item gets extra mania */
+nav li:nth-child(4){
+  background: linear-gradient(180deg, #8b5cf6, #5b21b6);
+  color:#fff5f8;
+  box-shadow: 0 8px 28px rgba(91,33,182,0.25);
+  animation: spookySpin 3s linear infinite, navColorShift 3.5s linear infinite;
+  transform-origin:center;
+}
+@keyframes spookySpin{
+  0%{ transform: rotate(0deg) scale(1) }
+  25%{ transform: rotate(12deg) scale(1.06) }
+  50%{ transform: rotate(0deg) scale(1.02) }
+  75%{ transform: rotate(-10deg) scale(1.04) }
+  100%{ transform: rotate(0deg) scale(1) }
+}
+
+/* Accessibility: honor reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Responsiveness tweaks */
+@media (max-width:900px){
+  h1{font-size:2.4rem}
+  img{width:56%}
+  section{margin:0.9rem 0}
+  nav li{padding:0.45rem 0.7rem}
+}
+
+@media (max-width:600px){
+  body{padding:1rem}
+  #wrapper{padding:1rem}
+  h1{font-size:1.8rem}
+  img{width:70%; max-width:260px}
+  nav ul{gap:0.5rem}
+  nav li{font-size:0.85rem;padding:0.4rem 0.6rem;border-radius:8px}
+  section{padding:0.85rem}
+  h2{font-size:0.95rem}
+}
+
+/* minor performance hints */
+img, nav li, section, h1, h2, p { will-change: transform, opacity, filter, box-shadow; }

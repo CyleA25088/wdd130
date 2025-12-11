@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorite Devotionals</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-image">
+        <h1>My Favorite<br>Devotionals</h1>
+      </div>
+    </header>
+    <main>
+      <div class="content-box">
+        <h2>Table of Favorites</h2>
+
+        <table class="fav-table">
+          <thead>
+            <tr>
+              <th>Speaker</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>President Russell M. Nelson</td>
+              <td>Revelation for the Church, Revelation for Our Lives</td>
+              <td>General Conference (Salt Lake City, Conference Center)</td>
+              <td>2018</td>
+            </tr>
+            <tr>
+              <td>Elder David A. Bednar</td>
+              <td>In the Strength of the Lord</td>
+              <td>BYU–Idaho Devotional (Rexburg, BYU–Idaho Center)</td>
+              <td>2001</td>
+            </tr>
+            <tr>
+              <td>Sister Sharon Eubank</td>
+              <td>By Union of Feeling We Obtain Power with God</td>
+              <td>General Women’s Session (Salt Lake City, General Conference)</td>
+              <td>2020</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Add a Devotional</h2>
+        <form class="fav-form">
+          <label for="speaker">Speaker:</label>
+          <input id="speaker" name="speaker" type="text" placeholder="Speaker name">
+
+          <label for="title">Title:</label>
+          <input id="title" name="title" type="text" placeholder="Devotional title">
+
+          <label for="location">Location:</label>
+          <input id="location" name="location" type="text" placeholder="Location">
+
+          <label for="year">Year:</label>
+          <input id="year" name="year" type="number" placeholder="Year">
+
+          <button type="submit">Add Devotional</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
