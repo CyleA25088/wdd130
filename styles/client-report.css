@@ -1,0 +1,60 @@
+/* styles.css */
+:root{
+  --bg:#f6f8fa;
+  --card:#fff;
+  --accent:#0b5cff;
+  --muted:#6b7280;
+  --pad:18px;
+  --radius:10px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:#111827;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);font-size:16px;line-height:1.5}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.site-header{
+  background:linear-gradient(90deg, #0b63ff 0%, #3aa0ff 100%);
+  color:white;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.site-header h1{margin:0;font-size:1.25rem}
+.site-header nav a{color:white;margin-left:12px;padding:8px 12px;border-radius:6px}
+.site-header nav a.cta{background:rgba(255,255,255,0.12);font-weight:600}
+
+.container{
+  max-width:980px;
+  margin:28px auto;
+  padding:16px;
+}
+
+article{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:var(--pad);
+  margin-bottom:18px;
+  box-shadow:0 6px 18px rgba(13,18,30,0.06);
+}
+
+h2{margin:0 0 10px 0;font-size:1.125rem}
+h3{margin:14px 0 6px 0;font-size:1rem;color:var(--accent)}
+p{margin:0 0 10px 0;color:#111827}
+
+.site-footer{
+  text-align:center;
+  padding:18px;
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+/* small screens */
+@media (max-width:560px){
+  .site-header{flex-direction:column;align-items:flex-start;gap:10px}
+  .container{padding:12px}
+}
