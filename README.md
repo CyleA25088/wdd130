@@ -15,6 +15,6 @@ This repository contains course materials, assignments, and projects for WDD130.
 
 ## Projects
 1. Main Portal Page
-2. ICE projects
+2. ICE Projects
 3. White Water Rafting
 4. Final Team Project
